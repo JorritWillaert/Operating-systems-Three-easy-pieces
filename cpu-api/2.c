@@ -12,10 +12,10 @@ int main(){
     if (rc < 0 || file < 0){
         fprintf(stderr, "Failed\n");
         exit(1);
-    } else if (rc == 0){
-        write(file, "This is the parent writing\n", strlen("This is the parent writing\n"));
+    } else if (rc == 0){ //rc == 0 --> child!
+        write(file, "This is the child writing\n", strlen("This is the child writing\n"));
     } else{
-        write(file, "This is the child\n", strlen("This is the child\n"));
+        write(file, "This is the parent\n", strlen("This is the parent\n"));
     }
     return 0;
 }
