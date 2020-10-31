@@ -11,10 +11,10 @@ int main(){
         exit(1);
     } else if (rc == 0){
         x += 5;
-        printf("Parent: x = %d\n", x);
+        printf("Child (pid = %d): x = %d\n", (int) getpid(), x);
     } else{
         x += 10;
-        printf("I'm the child of %d, and the value of x is here %d\n", rc, x);
+        printf("I'm the parent of %d, my value of x is %d\n", rc, x);
     }
     return 0;
 }
