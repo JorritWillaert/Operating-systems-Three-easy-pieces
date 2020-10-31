@@ -1,0 +1,2 @@
+This is the child.
+Now I'm talking to the new STDOUT.
