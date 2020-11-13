@@ -36,7 +36,7 @@ def roundup(size):
         value = value * 2.0
     return value
 
-    
+
 class OS:
     def __init__(self):
         # 4k phys memory (128 pages)
@@ -51,7 +51,7 @@ class OS:
         # os tracks
         self.usedPages      = []
         self.usedPagesCount = 0
-        self.maxPageCount   = self.physMem / self.pageSize
+        self.maxPageCount   = self.physMem // self.pageSize
 
         # no pages used (yet)
         for i in range(0, self.maxPageCount):
@@ -65,7 +65,7 @@ class OS:
         # associative array of pdbr's (indexed by PID)
         self.pdbr = {}
 
-        # mask is 11111 00000 00000 --> 0111 1100 0000 0000 
+        # mask is 11111 00000 00000 --> 0111 1100 0000 0000
         self.PDE_MASK    = 0x7c00
         self.PDE_SHIFT   = 10
 
@@ -122,7 +122,7 @@ class OS:
 
     def setPageDirEntry(self, pdeAddr, physicalPage):
         self.memory[pdeAddr] = 0x80 | physicalPage
-        
+
     def allocVirtualPage(self, pid, virtualPage, physicalPage):
         # make it into a virtual address, as everything uses this (and not VPN)
         virtualAddr = virtualPage << self.pageBits
@@ -172,7 +172,7 @@ class OS:
         for vp in range(0, self.vaPages):
             used[vp] = 0
         allocatedVPs = []
-        
+
         for vp in range(0, numPages):
             vp = int(random.random() * self.vaPages)
             while used[vp] == 1:
@@ -194,7 +194,7 @@ class OS:
         print('')
 
     def memoryDump(self):
-        for i in range(0, self.physMem / self.pageSize):
+        for i in range(0, self.physMem // self.pageSize):
             print('page %3d:' %  i, end='')
             for j in range(0, self.pageSize):
                 print('%02x' % self.memory[(i * self.pageSize) + j], end='')
@@ -265,8 +265,3 @@ for i in range(0, options.num):
 print('')
 
 exit(0)
-
-
-
-
-
