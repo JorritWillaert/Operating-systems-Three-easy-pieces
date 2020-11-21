@@ -5,7 +5,7 @@
 int balance = 0;
 
 void* worker(void* arg) {
-    balance++; // unprotected access 
+    balance++; // unprotected access
     return NULL;
 }
 
